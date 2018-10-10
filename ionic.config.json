@@ -1,0 +1,8 @@
+{
+  "name": "book-cd-lending",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "a451aad8"
+}
