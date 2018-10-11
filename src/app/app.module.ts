@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { MediaService } from '../services/media.service';
 import { BookListPage } from '../pages/book-list/book-list';
 import { CdListPage } from '../pages/cd-list/cd-list';
@@ -17,7 +16,6 @@ import { TabsPage } from '../pages/tabs/tabs';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     BookListPage,
     CdListPage,
     LendBookPage,
@@ -32,7 +30,6 @@ import { TabsPage } from '../pages/tabs/tabs';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     BookListPage,
     CdListPage,
     LendBookPage,
@@ -44,7 +41,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     StatusBar,
     SplashScreen,
     MediaService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

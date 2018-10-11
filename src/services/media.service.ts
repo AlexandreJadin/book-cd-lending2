@@ -1,7 +1,7 @@
 import { Media } from "../models/Media";
 
 
-export class MediaService{
+export class MediaService {
   bookList: Media[] = [
     {
       name: 'Lord of the Ring',
@@ -43,7 +43,4 @@ export class MediaService{
       isLent: false
     }
   ];
-
-
-
 }

@@ -1,14 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavParams, ViewController } from 'ionic-angular';
 import { Media } from '../../models/Media';
 import { MediaService } from '../../services/media.service';
 
-/**
- * Generated class for the LendBookPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @Component({
   selector: 'page-lend-book',
@@ -17,8 +11,7 @@ import { MediaService } from '../../services/media.service';
 export class LendBookPage implements OnInit{
   book: Media;
   index: number;
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
+  constructor(public navParams: NavParams,
               public mediaService: MediaService,
               public viewCtrl: ViewController) {
   }

@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavParams, ViewController } from 'ionic-angular';
 import { Media } from '../../models/Media';
 import { MediaService } from '../../services/media.service';
-/**
- * Generated class for the LendCdPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @Component({
   selector: 'page-lend-cd',
@@ -17,10 +11,9 @@ export class LendCdPage {
 
   cd: Media;
   index: number;
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public mediaService: MediaService,
-              public viewCtrl: ViewController) {
+  constructor(public navParams: NavParams,
+    public mediaService: MediaService,
+    public viewCtrl: ViewController) {
   }
 
   ngOnInit(): void {
@@ -28,11 +21,11 @@ export class LendCdPage {
     this.cd = this.mediaService.cdList[this.index]
   }
 
-  dismissModal(){
+  dismissModal() {
     this.viewCtrl.dismiss();
   }
 
-  onToggleCd(){
+  onToggleCd() {
     this.cd.isLent = !this.cd.isLent;
   }
 
