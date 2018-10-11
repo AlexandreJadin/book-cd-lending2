@@ -1,0 +1,36 @@
+
+<ion-header>
+
+    <ion-navbar>
+      <button ion-button (click)="dismissModal()">Fermer</button>
+    </ion-navbar>
+
+  </ion-header>
+
+
+  <ion-content padding>
+  <ion-card [ngClass]="{'isLent': cd.isLent, 'isNotLent' : !cd.isLent}">
+    <ion-card-header>
+      {{ cd.name }}
+    </ion-card-header>
+    <ion-card-content>
+      {{cd.description}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button full color="danger" [disabled]="cd.isLent" (click)="onToggleCd()">Prêter</button>
+        </ion-col>
+
+        <ion-col>
+          <button ion-button full color="secondary" [disabled]="!book.isLent" (click)="onToggleCd()">Rendre</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+  </ion-content>
+
+
