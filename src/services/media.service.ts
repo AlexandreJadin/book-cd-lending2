@@ -11,7 +11,7 @@ export class MediaService {
     },
     {
       name: 'Harry Potter',
-      description: 'Expeliermus',
+      description: 'Expelliarmus!',
       isBook: true,
       isLent: false
     },
