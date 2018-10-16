@@ -9,4 +9,12 @@ page-lend-book {
       background-color: color($colors, light);
     }
   }
+  .mandatory {
+    ion-item {
+      border-color: red;
+      border: solid;
+      border-width: 3px;
+      color: black;
+    }
+  }
 }

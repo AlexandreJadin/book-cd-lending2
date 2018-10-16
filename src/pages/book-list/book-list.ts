@@ -1,20 +1,25 @@
-import { Component } from '@angular/core';
-import { ModalController, MenuController } from 'ionic-angular';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ModalController, MenuController, ToastController, LoadingController } from 'ionic-angular';
 import { MediaService } from '../../services/media.service';
 import { Media } from '../../models/Media';
 import { LendBookPage } from '../lend-book/lend-book';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'page-book-list',
   templateUrl: 'book-list.html',
 })
-export class BookListPage {
+export class BookListPage implements OnInit, OnDestroy {
 
   bookList: Media[]
+  bookListSubscription: Subscription;
+
   constructor(
     public mediaService: MediaService,
     public modalCtrl: ModalController,
-    public menuCtrl: MenuController) {
+    public menuCtrl: MenuController,
+    public toastCtrl: ToastController,
+    public loadingCtrl: LoadingController) {
   }
 
   onLoadBook(index: number) {
@@ -25,10 +30,23 @@ export class BookListPage {
   onToggleMenu() {
     this.menuCtrl.open();
   }
-
-  ionViewWillEnter() {
-    this.bookList = this.mediaService.bookList.slice();
-
+  ngOnInit() {
+    this.bookListSubscription = this.mediaService.bookList$.subscribe(
+      (bookList: Media[]) => {
+        this.bookList = bookList.slice();
+      }
+    );
+    this.mediaService.emitBooks();
   }
+  // ionViewWillEnter() {
+  //   this.bookList = this.mediaService.bookList.slice();
+
+  // }
+
+  ngOnDestroy() {
+    this.bookListSubscription.unsubscribe();
+  }
+
+
 
 }

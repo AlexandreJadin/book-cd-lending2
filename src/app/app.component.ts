@@ -18,6 +18,8 @@ export class MyApp {
   settingsPage: any = SettingsPage;
   authPage: any = AuthPage;
 
+  isAuth: boolean = false;
+
   @ViewChild('content') content: NavController;
 
   constructor(platform: Platform,
@@ -37,7 +39,18 @@ export class MyApp {
       };
       firebase.initializeApp(config);
 
-
+      firebase.auth().onAuthStateChanged(
+        (user) => {
+          if (user){
+            this.isAuth = true;
+            this.content.setRoot(TabsPage);
+          }else{
+            this.isAuth = false;
+            this.content.setRoot(AuthPage, {mode : 'connect'});
+          }
+        }
+      )
+      this.content.setRoot(AuthPage, {mode : 'connect'})
       statusBar.styleDefault();
       splashScreen.hide();
     });
@@ -45,6 +58,11 @@ export class MyApp {
 
   onNavigate(page: any, data?: {}) {
     this.content.setRoot(page, data ? data : null);
+    this.menuCtrl.close();
+  }
+
+  onDisconnect(){
+    firebase.auth().signOut();
     this.menuCtrl.close();
   }
 }

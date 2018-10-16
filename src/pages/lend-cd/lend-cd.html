@@ -20,14 +20,22 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <button ion-button full color="danger" [disabled]="cd.isLent" (click)="onToggleCd()">Prêter</button>
+        <button ion-button full color="danger" [disabled]="cd.isLent" (click)="onBorrowCd()">Prêter</button>
       </ion-col>
 
       <ion-col>
-        <button ion-button full color="secondary" [disabled]="!cd.isLent" (click)="onToggleCd()">Rendre</button>
+        <button ion-button full color="secondary" [disabled]="!cd.isLent" (click)="onGiveBackCd()">Rendre</button>
       </ion-col>
     </ion-row>
   </ion-grid>
+
+
+  <form [formGroup]="this.borrowerForm">
+      <ion-item>
+        <ion-label floating>Emprunteur</ion-label>
+        <ion-input  formControlName="name"></ion-input>
+      </ion-item>
+    </form>
 
 
 </ion-content>

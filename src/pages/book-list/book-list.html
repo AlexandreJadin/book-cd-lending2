@@ -19,7 +19,7 @@
             *ngFor="let book of bookList; let i = index"
             [color]="book.isLent ? 'light-grey' : 'light'"
             (click)="onLoadBook(i)">
-      {{ book.name }}
+      {{ book.name }} <span *ngIf="book.borrower" style="float:right;">Emprunté par : {{ book.borrower }}</span>
     </button>
   </ion-list>
 </ion-content>

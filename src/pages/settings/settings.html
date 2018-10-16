@@ -12,5 +12,22 @@
 </ion-header>
 
 <ion-content padding>
-  Ceci est la page des Options!
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Gestion des données</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <button ion-button full color="secondary" (click)="onSaveList()">Sauvegarder</button>
+          </ion-col>
+
+          <ion-col>
+            <button ion-button full color="secondary" (click)="onFetchList()">Récupérer</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

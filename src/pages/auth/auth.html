@@ -1,13 +1,11 @@
 <ion-header>
 
   <ion-navbar>
-      <ion-buttons>
-          <button ion-button
-          icon-only
-          (click)="onToggleMenu()">
-          <ion-icon name="menu"></ion-icon>
-        </button>
-        </ion-buttons>
+    <ion-buttons>
+      <button ion-button icon-only (click)="onToggleMenu()">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
 
     <ion-title *ngIf="mode==='new'">Nouvel utiliateur</ion-title>
     <ion-title *ngIf="mode==='connect'">Connexion</ion-title>
@@ -17,22 +15,24 @@
 
 
 <ion-content padding>
-<form [formGroup]="authForm">
-<ion-list >
 
-  <ion-item>
-    <ion-label floating>Adresse mail</ion-label>
-    <ion-input type="email" formControlName="email"></ion-input>
-  </ion-item>
+  <form [formGroup]="this.authForm">
+    <ion-list>
 
-  <ion-item>
-      <ion-label floating>Mot de passe</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Adresse mail</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
 
-</ion-list>
-</form>
-<button ion-button full (click)="onSubmitForm()">Soumettre</button>
-<span ion-text color="danger">{{ errorMessage }}</span>
+      <ion-item>
+        <ion-label floating>Mot de passe</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+  </form>
+  <button ion-button full (click)="onSubmitForm()">Soumettre</button>
+  <span ion-text color="danger">{{ errorMessage }}</span>
 
 </ion-content>

@@ -19,7 +19,7 @@
               *ngFor="let cd of cdList; let i = index"
               [color]="cd.isLent ? 'light-grey' : 'light'"
               (click)="onLoadCd(i)">
-        {{ cd.name }}
+        {{ cd.name }}  <span *ngIf="cd.borrower" style="float:right;">Emprunté par : {{ cd.borrower }}</span>
       </button>
     </ion-list>
   </ion-content>
