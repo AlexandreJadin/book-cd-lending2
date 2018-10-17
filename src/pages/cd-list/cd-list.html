@@ -1,25 +1,20 @@
 <ion-header>
-    <ion-navbar>
-      <ion-buttons>
-        <button ion-button
-        icon-only
-        (click)="onToggleMenu()">
+  <ion-navbar>
+    <ion-buttons>
+      <button ion-button icon-only (click)="onToggleMenu()">
         <ion-icon name="menu"></ion-icon>
       </button>
-      </ion-buttons>
+    </ion-buttons>
 
 
-      <ion-title>Cd's</ion-title>
-    </ion-navbar>
-  </ion-header>
+    <ion-title>Cd's</ion-title>
+  </ion-navbar>
+</ion-header>
 
-  <ion-content padding>
-    <ion-list>
-      <button ion-item
-              *ngFor="let cd of cdList; let i = index"
-              [color]="cd.isLent ? 'light-grey' : 'light'"
-              (click)="onLoadCd(i)">
-        {{ cd.name }}  <span *ngIf="cd.borrower" style="float:right;">Emprunté par : {{ cd.borrower }}</span>
-      </button>
-    </ion-list>
-  </ion-content>
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngFor="let cd of cdList; let i = index" [color]="cd.isLent ? 'light-grey' : 'light'" (click)="onLoadCd(i)">
+      {{ cd.name }} <span *ngIf="cd.borrower" style="float:right;">Emprunté par : {{ cd.borrower }}</span>
+    </button>
+  </ion-list>
+</ion-content>

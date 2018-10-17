@@ -36,12 +36,8 @@ export class BookListPage implements OnInit, OnDestroy {
         this.bookList = bookList.slice();
       }
     );
-    this.mediaService.emitBooks();
+    this.mediaService.fetchLists();
   }
-  // ionViewWillEnter() {
-  //   this.bookList = this.mediaService.bookList.slice();
-
-  // }
 
   ngOnDestroy() {
     this.bookListSubscription.unsubscribe();

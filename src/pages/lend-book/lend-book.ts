@@ -51,10 +51,17 @@ export class LendBookPage implements OnInit{
   onSave(){
     console.log(this.book)
     console.log(this.temporaryBook)
-    // this.book=Object.assign({},this.temporaryBook);
-    this.book = this.temporaryBook
+    this.book=Object.assign({},this.temporaryBook);
+    // this.book = this.temporaryBook
     console.log(this.book)
     console.log(this.temporaryBook)
+    this.mediaService.saveLists()
+    //TODO save in local storage
+    this.dismissModal();
+  }
+
+  onClose(){
+    this.mediaService.fetchLists();
     //TODO save in local storage
     this.dismissModal();
   }

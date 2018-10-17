@@ -1,11 +1,9 @@
 <ion-header>
   <ion-navbar>
     <ion-buttons>
-      <button ion-button
-      icon-only
-      (click)="onToggleMenu()">
-      <ion-icon name="menu"></ion-icon>
-    </button>
+      <button ion-button icon-only (click)="onToggleMenu()">
+        <ion-icon name="menu"></ion-icon>
+      </button>
     </ion-buttons>
 
 
@@ -15,10 +13,8 @@
 
 <ion-content padding>
   <ion-list>
-    <button ion-item
-            *ngFor="let book of bookList; let i = index"
-            [color]="book.isLent ? 'light-grey' : 'light'"
-            (click)="onLoadBook(i)">
+    <button ion-item *ngFor="let book of bookList; let i = index" [color]="book.isLent ? 'light-grey' : 'light'"
+      (click)="onLoadBook(i)">
       {{ book.name }} <span *ngIf="book.borrower" style="float:right;">Emprunté par : {{ book.borrower }}</span>
     </button>
   </ion-list>
