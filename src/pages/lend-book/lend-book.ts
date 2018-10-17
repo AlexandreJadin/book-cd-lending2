@@ -13,6 +13,7 @@ export class LendBookPage implements OnInit{
   book: Media;
   index: number;
   borrowerForm: FormGroup;
+  temporaryBook: Media;
 
   constructor(public navParams: NavParams,
               public mediaService: MediaService,
@@ -23,6 +24,8 @@ export class LendBookPage implements OnInit{
   ngOnInit(): void {
     this.index = this.navParams.get('index')
     this.book = this.mediaService.bookList[this.index]
+    this.temporaryBook = this.book
+    // this.temporaryBook = Object.assign({},this.book);
     this.initForm();
   }
 
@@ -37,16 +40,23 @@ export class LendBookPage implements OnInit{
   }
 
   onBorrowBook(){
-    this.book.borrower = this.borrowerForm.get('name').value;
-    this.book.isLent = true;
+    this.temporaryBook.borrower = this.borrowerForm.get('name').value;
+    this.temporaryBook.isLent = true;
   }
   onGiveBackBook(){
-    this.book.borrower = '';
-    this.book.isLent = false;
+    this.temporaryBook.borrower = '';
+    this.temporaryBook.isLent = false;
   }
 
   onSave(){
-
+    console.log(this.book)
+    console.log(this.temporaryBook)
+    // this.book=Object.assign({},this.temporaryBook);
+    this.book = this.temporaryBook
+    console.log(this.book)
+    console.log(this.temporaryBook)
+    //TODO save in local storage
+    this.dismissModal();
   }
 
 }

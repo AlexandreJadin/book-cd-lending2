@@ -70,15 +70,15 @@ export class MediaService {
         (data: DataSnapshot) => {
           resolve(data);
         }
-        ).then(// TODO correct promise chaining
-          () => {
-            firebase.database().ref('cds').set(this.cdList).then(
-              (data: DataSnapshot) => {
+      ).then(// TODO correct promise chaining
+        () => {
+          firebase.database().ref('cds').set(this.cdList).then(
+            (data: DataSnapshot) => {
               resolve(data);
             }
-            )
-          }
-        ).catch(
+          )
+        }
+      ).catch(
         (error) => {
           reject(error);
         }
@@ -93,13 +93,24 @@ export class MediaService {
         (data: DataSnapshot) => {
           this.bookList = data.val();
           this.emitBooks();
-          resolve('Données récupérées avec succès !');
-        }, (error) => {
+          resolve('Livres récupérées avec succès !');
+        }).then(// TODO correct promise chaining
+          () => {
+            firebase.database().ref('cds').once('value').then(
+          (data: DataSnapshot) => {
+            this.cdList = data.val();
+            this.emitCds();
+            resolve('Cds récupérées avec succès !');
+          }
+            )
+        }
+        ).catch((error) => {
           reject(error);
         }
-      );
+        );
     });
-
-  //TODO store in device storage
+    //TODO store in device storage
   }
+
+
 }

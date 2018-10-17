@@ -9,23 +9,24 @@
 
 <ion-content padding>
 
-  <ion-card [ngClass]="{'isLent': book.isLent, 'isNotLent' : !book.isLent}">
+  <ion-card [ngClass]="{'isLent': temporaryBook.isLent, 'isNotLent' : !temporaryBook.isLent}">
     <ion-card-header>
       {{ book.name }}
     </ion-card-header>
     <ion-card-content>
       {{book.description}}
+      <p *ngIf="temporaryBook.isLent"> Emprunté par {{ temporaryBook.borrower }}</p>
     </ion-card-content>
   </ion-card>
 
   <ion-grid>
     <ion-row>
       <ion-col>
-        <button ion-button full color="danger" [disabled]="book.isLent || !this.borrowerForm.get('name').value" (click)="onBorrowBook()">Prêter</button>
+        <button ion-button full color="danger" [disabled]="temporaryBook.isLent || !this.borrowerForm.get('name').value" (click)="onBorrowBook()">Prêter</button>
       </ion-col>
 
       <ion-col>
-        <button ion-button full color="secondary" [disabled]="!book.isLent" (click)="onGiveBackBook()">Rendre</button>
+        <button ion-button full color="secondary" [disabled]="!temporaryBook.isLent" (click)="onGiveBackBook()">Rendre</button>
       </ion-col>
     </ion-row>
   </ion-grid>
